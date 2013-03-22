@@ -1,26 +1,31 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import javax.swing.*;
 
 public class showNote {
-//private int x;
-//private int y;
 public static void main(String[] args) {
 int n = args.length;
-//this.x=x;
-//this.y=y;
+System.out.println(n);
+int offset = n/2;
+int x=3;
+int y=5;
+int width = 7;
+int height = 9;
+Picture[] pic = new Picture[n/2];
 int[] ArrayW = new int[n/2];
 int[] ArrayH = new int[n/2];
 int[] ArrayX = new int[n/2];
 int[] ArrayY = new int[n/2];
-for (int k=0; k>n;k++){
-  for (int i=n/2; i<0; i++){ 
-       		Picture pic = new Picture(args[i]);
-        	ArrayW[i]  = pic.width();
-        	ArrayH[i] = pic.height();
+
+for (int i=n/2; i<n; i++){ 
+
+       		pic[i-offset] = new Picture(args[i]);
+        	ArrayW[i-offset]  = pic[i-offset].width();
+        	ArrayH[i-offset] = pic[i-offset].height();
         	
 	
-	for (int j=0;j<n/2;j++){
+for (int j=0;j<offset;j++){
 		ArrayX[j] = j*40;
 			if(args[j].equals("E5")){
 				ArrayY[j] = 48;
@@ -50,12 +55,22 @@ for (int k=0; k>n;k++){
 				 ArrayY[j] = 264;
 			}
 	}
+
+
+for (int a=0; a<offset;a++){
+	x=ArrayX[a];
+	y=ArrayY[a];
+	width = ArrayW[a];
+	height=ArrayH[a];
+	
+}
+
+pic[i-offset].setBounds(x, y, width, height);
+pic[i-offset].show();
 }
 }
-//finish array for loop here
-//pic.setBounds(x, y, width, height);
-//pic.show();
 }
-}
+
+
 
 
